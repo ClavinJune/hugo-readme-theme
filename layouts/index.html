@@ -21,7 +21,7 @@
 </head>
 <body>
   <div class="container-lg px-3 my-5 markdown-body">
-  {{ readFile "README.md" | markdownify }}
+  {{ readFile "index.md" | markdownify }}
   <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
     Copyright &copy; {{ now.Year }} &middot; {{ .Site.Params.Author }}
   </div>
