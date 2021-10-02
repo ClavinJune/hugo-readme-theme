@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatbile" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {{- with .Site.Params.Author }}
+    <meta name="author" content="{{ . }}" />
+  {{- end }}
+
+  <meta property="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />  
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
+  
+  <title>{{ .Title }}</title>
+  <link rel="preload" href="https://unpkg.com/@primer/css@^16.0.0/dist/primer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://unpkg.com/@primer/css@^16.0.0/dist/primer.css">
+  </noscript>
+</head>
+<body>
+  <div class="container-lg px-3 my-5 markdown-body">
+  {{ readFile "README.md" | markdownify }}
+  <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+    Copyright &copy; {{ now.Year }} &middot; {{ .Site.Params.Author }}
+  </div>
+  </div>
+</body>
+</html>
